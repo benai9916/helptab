@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default axios.create({
   withCredentials: true,
-  baseURL: process.env.BACKEND_URL || "http://localhost:5000",
+  baseURL: 'https://full-stack-helptap.vercel.app' || "http://localhost:5000",
   headers: {
     "Content-type": "application/json"
   }
