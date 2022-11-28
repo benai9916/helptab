@@ -10,8 +10,7 @@ import { addBook, getBook } from "store/slices/sellerSlice";
 const AddBooks = (props) => {
   const { setLoading } = props;
   const dispatch = useDispatch();
-  const { sellerId } = useParams();
-  const [shopId, setShopId] = useState(null);
+  let { sellerId } = useParams();
   const [errors, setErros] = useState({});
   const [value, setValue] = useState({});
   const { isLoading, isError, booksList, shopName } = useSelector(
@@ -25,7 +24,6 @@ const AddBooks = (props) => {
 
   useEffect(() => {
     if (booksList) {
-      setShopId(booksList[0]?.id);
       setValue((prev) => ({
         ...prev,
         ["shopId"]: shopName?.id,
@@ -46,9 +44,19 @@ const AddBooks = (props) => {
   };
 
   const handleSubmit = (e) => {
+    console.log(value);
     if (e) e.preventDefault();
-    dispatch(addBook(value));
-    setLoading(isLoading);
+    if (!value.stockCount) {
+      setErros({ stockCount: "Please enter count" });
+    } else if (!value.bookName) {
+      setErros({ bookName: "Please enter book name" });
+    } else {
+      e.target.reset();
+      setErros({});
+      setValue({});
+      dispatch(addBook(value));
+      setLoading(isLoading);
+    }
   };
 
   return (
@@ -75,8 +83,8 @@ const AddBooks = (props) => {
             onSubmit={handleSubmit}
           >
             <TextField
-              error={errors.name ? true : false}
-              helperText={errors.name}
+              error={errors.bookName ? true : false}
+              helperText={errors.bookName}
               name="bookName"
               label="Book Name"
               variant="outlined"
@@ -84,8 +92,8 @@ const AddBooks = (props) => {
               onChange={handleChange}
             />
             <TextField
-              error={errors.email ? true : false}
-              helperText={errors.email}
+              error={errors.stockCount ? true : false}
+              helperText={errors.stockCount}
               name="stockCount"
               label="No of Book"
               variant="outlined"
