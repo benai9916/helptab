@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 require("dotenv").config();
 
 // local import
+const { logout } =  require("./controllers/buyer/buyerAuth");
 const sellerRoute = require("./routes/sellerRoute");
 const buyerRouter = require("./routes/buyerRoute");
 
@@ -12,7 +13,7 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 app.use(
   cors({
-    origin: ['http://localhost:3000', "https://full-stack-helptab-frontend.vercel.app"],
+    origin: ['http://localhost:3000', 'https://full-stack-helptab-frontend.vercel.app'],
     credentials: true,
   })
 );
@@ -30,3 +31,7 @@ app.get("/", (req, res) => {
 // routes
 app.use("/seller", sellerRoute);
 app.use("/", buyerRouter);
+// logout
+app.get('/logout', (req, res) => {
+  logout(req, res)
+})
