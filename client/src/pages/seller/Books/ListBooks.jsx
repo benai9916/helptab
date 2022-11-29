@@ -36,6 +36,11 @@ const ListBooks = (props) => {
             textAlign="center"
           >
             <Grid item xs={11}>
+              {booksList?.length < 1 ? (
+                 <Typography variant="h4" gutterBottom mb={6}>
+                 No Books Added
+               </Typography>
+              ) :  (
               <Box sx={{ width: "60%" }}>
                 <Stack spacing={2}>
                   <Paper
@@ -81,6 +86,7 @@ const ListBooks = (props) => {
                   ))}
                 </Stack>
               </Box>
+              )}
             </Grid>
             <Grid item xs={11} textAlign="left" mt={10}>
               <Button variant="contained" color="success" size="large">

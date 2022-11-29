@@ -22,16 +22,6 @@ const AddBooks = (props) => {
     setLoading(isLoading);
   }, []);
 
-  useEffect(() => {
-    if (booksList) {
-      setValue((prev) => ({
-        ...prev,
-        ["shopId"]: shopName?.id,
-        ["sellerId"]: sellerId,
-      }));
-    }
-  }, [booksList]);
-
   const handleChange = (e) => {
     if (e.target.name === "stockCount") {
       setValue((prev) => ({
@@ -44,17 +34,17 @@ const AddBooks = (props) => {
   };
 
   const handleSubmit = (e) => {
-    console.log(value);
+    let data = {...value, ["shopId"]: shopName?.id, ["sellerId"]: sellerId};
     if (e) e.preventDefault();
-    if (!value.stockCount) {
+    if (!data.stockCount) {
       setErros({ stockCount: "Please enter count" });
-    } else if (!value.bookName) {
+    } else if (!data.bookName) {
       setErros({ bookName: "Please enter book name" });
     } else {
       e.target.reset();
       setErros({});
       setValue({});
-      dispatch(addBook(value));
+      dispatch(addBook(data));
       setLoading(isLoading);
     }
   };
