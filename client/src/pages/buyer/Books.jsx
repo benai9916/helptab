@@ -26,7 +26,7 @@ const Books = (props) => {
 
   const handleAddToCart = (book, sellerName) => {
     let data = { ...book, ["sellerName"]: sellerName };
-    if (cart.length > 0) {
+    if (cart?.length > 0) {
       let seller = new Set([data.sellerId]);
       for (let c of cart) {
         seller.add(c.sellerId);
@@ -72,7 +72,7 @@ const Books = (props) => {
                       {sellerBook?.sellerName}
                     </Typography>
                   </Box>
-                  {cart.length > 0 && (
+                  {cart?.length > 0 && (
                     <Button
                       variant="contained"
                       color="warning"

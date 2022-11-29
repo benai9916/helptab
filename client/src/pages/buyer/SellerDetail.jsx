@@ -46,7 +46,7 @@ const SellerDetail = (props) => {
             </Typography>
             <Divider />
           </Box>
-          {sellerDetail.shop.length > 0 ? (
+          {sellerDetail.shop?.length > 0 ? (
             <>
           <Typography variant="subtitle1" gutterBottom>
             Shop id: {sellerDetail.shop[0].id}

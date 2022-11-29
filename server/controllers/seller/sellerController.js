@@ -18,7 +18,7 @@ const createShop = async (req, res) => {
     const shopExists = await prisma.shop.findMany({
       where: { sellerId: Number(sellerId), shopName: shopName },
     });
-    if (shopExists.length > 0)
+    if (shopExists?.length > 0)
       return res
         .status(400)
         .json(

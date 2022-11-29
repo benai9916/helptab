@@ -43,7 +43,7 @@ const Cart = () => {
             justifyContent="center"
             textAlign="left"
           >
-            {cart.length < 1 ? (
+            {cart?.length < 1 ? (
               <Typography variant="h4" gutterBottom>
                 Cart is Empty
               </Typography>
@@ -84,7 +84,7 @@ const Cart = () => {
               </>
             )}
           </Grid>
-          {cart.length > 0 && (
+          {cart?.length > 0 && (
             <Box textAlign="center" mt={8}>
               <Button
                 variant="contained"

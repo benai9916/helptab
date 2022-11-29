@@ -102,7 +102,7 @@ export const PermanentDrawerLeft = ({ clientType }) => {
             <>
               <LeftNavLink path={`/buyer/${buyerId}`} text="Home" />
               <LeftNavLink path={`/buyer/${buyerId}/cart`} text="Cart">
-                <Badge badgeContent={cart.length} color="warning">
+                <Badge badgeContent={cart?.length} color="warning">
                   <ShoppingCartIcon color="action" />
                 </Badge>
               </LeftNavLink>

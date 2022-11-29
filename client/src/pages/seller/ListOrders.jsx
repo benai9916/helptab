@@ -36,7 +36,7 @@ const ListOrders = (props) => {
             <Grid item xs={11}>
               <Box sx={{ width: "60%" }}>
                 <Stack spacing={2}>
-                  {ordersDetails.length < 1 ? (
+                  {ordersDetails?.length < 1 ? (
                     <Typography variant="h5" gutterBottom>
                       No Orders
                     </Typography>

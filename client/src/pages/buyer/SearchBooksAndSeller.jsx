@@ -53,7 +53,7 @@ const SearchBooksAndSeller = (props) => {
 
   const handleAddToCart = (book, sellerName) => {
     let data = { ...book, ["sellerName"]: sellerName };
-    if (cart.length > 0) {
+    if (cart?.length > 0) {
       let seller = new Set([data.sellerId]);
       for (let c of cart) {
         seller.add(c.sellerId);
@@ -232,8 +232,7 @@ const SearchBooksAndSeller = (props) => {
                 </Link>
               </Grid>
             ))}
-            {((sellerSearch && sellerSearch.length < 1 && bookSearch?.length !== 0) ||
-              bookSearch.length < 1) && (
+            {((sellerSearch && sellerSearch?.length < 1 && bookSearch?.length !== 0)) && (
               <Grid item xs={4} mt={10}>
                 <Typography variant="h4" gutterBottom>
                   No result
