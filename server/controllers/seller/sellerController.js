@@ -104,6 +104,7 @@ const getBook = async (req, res) => {
       sellerExistError(req, res);
     }
   } catch (err) {
+    console.log(err)
     res
       .status(500)
       .json(error("Something went wrong, please try again.", res.statusCode));
@@ -171,6 +172,7 @@ const getSeller = async (req, res) => {
       sellerExistError(req, res);
     }
   } catch (err) {
+    console.log(err)
     res
       .status(500)
       .json(error("Something went wrong, please try again.", res.statusCode));

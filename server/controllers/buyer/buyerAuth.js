@@ -39,6 +39,7 @@ const signUp = async (req, res) => {
         .json(success("Successfully registered", res.statusCode, addBuyer));
     }
   } catch (err) {
+    console.log(err)
     res
       .status(500)
       .json(success("Something went wrong, please try again.", res.statusCode));
@@ -94,6 +95,7 @@ const logout = (req, res) => {
       })
       .json(success("Successfully logged out", res.statusCode));
   } catch (err) {
+    console.log(err)
     res
       .status(500)
       .json(success("Something went wrong, please try again.", res.statusCode));

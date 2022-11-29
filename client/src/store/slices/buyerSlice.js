@@ -119,6 +119,17 @@ export const searchSellers = createAsyncThunk("search/searchSeller", async (data
   }
 });
 
+export const logout = createAsyncThunk("buyerSller/logout", async (data, { rejectWithValue }) => {
+  try {
+    const response = await ApiService.logout();
+    return response.data;
+  } catch (error) {
+    let message = error?.response?.data.message || 'something went wrong'
+    toast.error(message, { id: message.replace(/ /g,'') })
+    return rejectWithValue(message);
+  }
+});
+
 const buyerSlice = createSlice({
   name: 'buy',
   initialState: initialState,

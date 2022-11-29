@@ -33,6 +33,11 @@ const ListAllSellers = (props) => {
           justifyContent="center"
           textAlign="center"
         >
+          {allSellers?.length < 1 && (
+             <Typography variant="h4" gutterBottom mt={4}>
+             No Seller Exists
+           </Typography>
+          )}
           {allSellers.map((seller, ix) => (
             <Grid key={ix} item xs={4}>
               <Link to={`${seller.id}`}>

@@ -6,6 +6,7 @@ const buyer =  require('../controllers/buyer/buyerController')
 
 const buyerRoute = express.Router()
 
+buyerRoute.post('/logout', buyerAuth.logout)
 buyerRoute.post('/buyer/new', buyerAuth.signUp)
 buyerRoute.post('/buyer/login', buyerAuth.login)
 buyerRoute.get('/sellers', auth, buyer.getAllSellers)

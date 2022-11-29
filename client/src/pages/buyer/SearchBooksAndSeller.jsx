@@ -116,10 +116,17 @@ const SearchBooksAndSeller = (props) => {
         </Grid>
 
         {bookSearch && (
+          <>
+          
           <Grid item xs={12}>
             <Grid item xs={11} mt={10}>
               <Box sx={{ width: "60%", ml: "auto", mr: "auto" }}>
                 <Stack spacing={2}>
+                {bookSearch?.length < 1 ? (
+            <Typography variant="h6" gutterBottom>
+                      No Result
+                    </Typography>
+          ) : (
                   <Paper
                     sx={{
                       p: 1,
@@ -142,6 +149,8 @@ const SearchBooksAndSeller = (props) => {
                       Add to cart
                     </Typography>
                   </Paper>
+          )}
+          <>
                   {bookSearch?.map((book, i) => (
                     <Paper
                       key={i}
@@ -174,10 +183,12 @@ const SearchBooksAndSeller = (props) => {
                       </Button>
                     </Paper>
                   ))}
+                  </>
                 </Stack>
               </Box>
             </Grid>
           </Grid>
+          </>
         )}
         {sellerSearch && (
           <>
@@ -221,7 +232,7 @@ const SearchBooksAndSeller = (props) => {
                 </Link>
               </Grid>
             ))}
-            {((sellerSearch && sellerSearch.length < 1) ||
+            {((sellerSearch && sellerSearch.length < 1 && bookSearch?.length !== 0) ||
               bookSearch.length < 1) && (
               <Grid item xs={4} mt={10}>
                 <Typography variant="h4" gutterBottom>

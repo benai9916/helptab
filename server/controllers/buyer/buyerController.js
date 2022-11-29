@@ -16,6 +16,7 @@ const getAllSellers = async (req, res) => {
         .json(error("Not able to find any seller", res.statusCode));
     }
   } catch (err) {
+    console.log(err)
     res
       .status(500)
       .json(success("Something went wrong, please try again.", res.statusCode));
@@ -40,6 +41,7 @@ const getSellersById = async (req, res) => {
         .json(error("Not able to find any seller", res.statusCode));
     }
   } catch (err) {
+    console.log(err)
     res
       .status(500)
       .json(success("Something went wrong, please try again.", res.statusCode));
@@ -64,6 +66,7 @@ const getBookBySellerId = async (req, res) => {
         .json(error("Not able to find any seller", res.statusCode));
     }
   } catch (err) {
+    console.log(err)
     res
       .status(500)
       .json(success("Something went wrong, please try again.", res.statusCode));
@@ -182,6 +185,7 @@ const getBuyer = async (req, res) => {
         .json(error("User does not exists", res.statusCode));
     }
   } catch (err) {
+    console.log(err)
     res
       .status(500)
       .json(success("Something went wrong, please try again.", res.statusCode));
@@ -210,6 +214,7 @@ const searchBooks = async (req, res) => {
     });
     return res.status(200).json(success("Success", res.statusCode, bookResult));
   } catch (err) {
+    console.log(err)
     res
       .status(500)
       .json(success("Something went wrong, please try again.", res.statusCode));
@@ -239,6 +244,7 @@ const searchSeller = async (req, res) => {
       .status(200)
       .json(success("Success", res.statusCode, sellerResult));
   } catch (err) {
+    console.log(err)
     res
       .status(500)
       .json(success("Something went wrong, please try again.", res.statusCode));

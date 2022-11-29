@@ -53,6 +53,9 @@ class ApiService {
   searchSeller(search) {
     return http.get(`/search/seller?search=${search}`);
   }
+  logout() {
+    return http.get(`/logout`);
+  }
 }
 
 export default new ApiService();

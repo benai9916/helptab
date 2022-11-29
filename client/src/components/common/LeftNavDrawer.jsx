@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Box, Badge } from "@mui/material";
+import { Box, Badge, Grid, Button } from "@mui/material";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@mui/material/AppBar";
@@ -11,6 +11,7 @@ import AutoStoriesTwoToneIcon from "@mui/icons-material/AutoStoriesTwoTone";
 import { Outlet, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { logout } from "store/slices/buyerSlice";
 // local
 import { BUYER, SELLER } from "constants";
 import LeftNavLink from "./LeftNavLink";
@@ -38,6 +39,12 @@ export const PermanentDrawerLeft = ({ clientType }) => {
     if (!sellerId) sellerId = id || ids;
   }
 
+  const handleLogout = async () => {
+    await dispatch(logout()).then(res => {
+      window.location.href = '/'
+    })
+  }
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -54,6 +61,13 @@ export const PermanentDrawerLeft = ({ clientType }) => {
           >
             {clientType}
           </Typography>
+          <Box>
+          <Grid item xs={2} textAlign={"center"} sx={{position: 'absolute', right: 30, top: 14, bottom: 2}}>
+            <Button size="small" variant="contained" color="warning" onClick={handleLogout}>
+              Logout
+            </Button>
+          </Grid>
+          </Box>
         </Toolbar>
       </AppBar>
       <Drawer

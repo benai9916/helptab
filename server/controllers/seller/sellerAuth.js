@@ -37,6 +37,7 @@ const signUp = async (req, res) => {
         sameSite: "none"}).json(success("Successfully registered", res.statusCode, addSeller));
     }
   } catch (err) {
+    console.log(err)
     res
       .status(500)
       .json(success("Something went wrong, please try again.", res.statusCode));
@@ -68,6 +69,7 @@ const login = async (req, res) => {
         sameSite: "none"}).json(success("Successfully logged in.", res.statusCode, seller));
     }
   } catch (err) {
+    console.log(err)
     res
       .status(500)
       .json(success("Something went wrong, please try again.", res.statusCode));
