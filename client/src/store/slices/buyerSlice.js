@@ -141,6 +141,9 @@ const buyerSlice = createSlice({
     updateCartItem: (state, action) => {
       state.cart = [action.payload]
       toast.success('Added to cart', {id: 'update-cart'})
+    },
+    emptyCart: (state) => {
+      state.cart = []
     }
   },
   extraReducers: (builder) => {
@@ -268,5 +271,5 @@ const buyerSlice = createSlice({
   },
 })
 
-export const { cartItems, updateCartItem } = buyerSlice.actions
+export const { cartItems, updateCartItem, emptyCart } = buyerSlice.actions
 export default buyerSlice

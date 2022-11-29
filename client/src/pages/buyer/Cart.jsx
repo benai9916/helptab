@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 import {
   Box,
   Grid,
@@ -13,19 +12,25 @@ import { useParams } from "react-router-dom";
 import {
   placeOrder
 } from "store/slices/buyerSlice";
+import { emptyCart } from "store/slices/buyerSlice";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const { buyerId } = useParams();
   const { isLoading, cart } = useSelector((state) => state.buyer);
 
-  const handelePlacedOrder = () => {
+  const handelePlacedOrder = async () => {
     let data = {'data': cart, 'buyerId': buyerId}
-    dispatch(placeOrder(data));
+    await dispatch(placeOrder(data)).then(res => {
+      dispatch(emptyCart())
+    });
   };
 
   return (
     <>
+    {isLoading && (
+      <h1>Please wait</h1>
+    )}
       {!isLoading && (
         <Box sx={{ height: "100vh", mt: 2 }}>
           <Typography variant="h4" gutterBottom mb={6}>
